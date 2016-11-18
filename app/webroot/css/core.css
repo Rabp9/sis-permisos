@@ -1,0 +1,19 @@
+td.e1, option.e1 { /* Amarillo */
+    background-color: #f9dd34 !important;
+    color: #000;
+}
+
+td.e2, option.e2  { /* Verde */
+    background-color: #4cd964 !important;
+    color: #000;
+}
+
+td.e3, option.e3 { /* Rojo */
+    background-color: #b81900 !important;
+    color: #fff;
+}
+
+td.e4, option.e4 { /* Azul */
+    background-color: #00aced !important;
+    color: #000;
+}

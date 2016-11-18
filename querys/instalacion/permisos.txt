@@ -1,0 +1,85 @@
+
+CREATE TABLE [Permiso].[Permisos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nro_boleta] [int] NULL,
+	[destino] [varchar](50) NOT NULL,
+	[fecha_permiso] [date] NOT NULL,
+	[hora_salida] [time](0) NULL,
+	[hora_retorno] [time](0) NULL,
+	[motivo_id] [int] NOT NULL,
+	[Per_DNI] [char](8) NOT NULL,
+	[created] [datetime] NOT NULL,
+	[hora_registro_aprobacion] [datetime] NULL,
+	[hora_registro_retorno] [datetime] NULL,
+	[Usu_Codigo_aprobacion] [int] NULL,
+	[Usu_Codigo_retorno] [int] NULL,
+	[estado] [char](1) NOT NULL,
+ CONSTRAINT [PK_Permisos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+ALTER TABLE [Permiso].[Permisos] ADD  CONSTRAINT [DF_Permisos_estado]  DEFAULT ((1)) FOR [estado]
+GO
+
+ALTER TABLE [Permiso].[Permisos]  WITH CHECK ADD  CONSTRAINT [FK_Permisos_Motivos] FOREIGN KEY([motivo_id])
+REFERENCES [Permiso].[Motivos] ([id])
+GO
+
+ALTER TABLE [Permiso].[Permisos] CHECK CONSTRAINT [FK_Permisos_Motivos]
+GO
+
+ALTER TABLE [Permiso].[Permisos]  WITH CHECK ADD  CONSTRAINT [FK_Permisos_Trabajador] FOREIGN KEY([Per_DNI])
+REFERENCES [RRHH].[Trabajador] ([Per_DNI])
+GO
+
+ALTER TABLE [Permiso].[Permisos] CHECK CONSTRAINT [FK_Permisos_Trabajador]
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'codigo identificador del sistema' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'id'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Nro. autogenerado de la boleta de permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'nro_boleta'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Destino a donde se dirige el trabajador' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'destino'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'la fecha en que el trabajdor quiere salir' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'fecha_permiso'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'hora en que el trabajador sale de permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'hora_salida'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'hora en que el trabajador regresa de su permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'hora_retorno'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'codigo identificador del motvio' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'motivo_id'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'dni del trabajador que sale de permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'Per_DNI'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'fecha en que se creo el registro' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'created'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'fecha y hora en que se registro la aprobacion del permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'hora_registro_aprobacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'fecha y hora en que se registro el retorno del trabajador' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'hora_registro_retorno'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'codio del usuario que aprueba el permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'Usu_Codigo_aprobacion'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'codigo del usuario que registra la hora de retorno del permiso' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'Usu_Codigo_retorno'
+GO
+
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'estados 1: Pendiente, 2: Aprobado, 3: Denegado, 4: Termiando' , @level0type=N'SCHEMA',@level0name=N'Permiso', @level1type=N'TABLE',@level1name=N'Permisos', @level2type=N'COLUMN',@level2name=N'estado'
+GO
+
+

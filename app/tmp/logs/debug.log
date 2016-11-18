@@ -1,0 +1,194 @@
+2015-11-12 10:16:57 Debug: Notice (8): Undefined variable: error in [C:\wamp\www\sis-permisos\lib\Cake\Error\ErrorHandler.php, line 127]
+Trace:
+ErrorHandler::handleException() - CORE\Cake\Error\ErrorHandler.php, line 127
+[main] - [internal], line ??
+
+2015-11-12 10:16:57 Debug: Notice (8): Undefined variable: error in [C:\wamp\www\sis-permisos\lib\Cake\Error\ErrorHandler.php, line 127]
+Trace:
+ErrorHandler::handleException() - CORE\Cake\Error\ErrorHandler.php, line 127
+call_user_func - [internal], line ??
+ErrorHandler::handleFatalError() - CORE\Cake\Error\ErrorHandler.php, line 284
+ErrorHandler::handleError() - CORE\Cake\Error\ErrorHandler.php, line 213
+call_user_func - [internal], line ??
+App::_checkFatalError() - CORE\Cake\Core\App.php, line 933
+App::shutdown() - CORE\Cake\Core\App.php, line 906
+[main] - [internal], line ??
+
+2015-11-12 10:39:56 Debug: Notice (8): Undefined index: Trabajador in [C:\wamp\www\sis-permisos\app\View\Permisos\register.ctp, line 28]
+Trace:
+include - APP\View\Permisos\register.ctp, line 28
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-12 10:39:56 Debug: Notice (8): Undefined index: Trabajador in [C:\wamp\www\sis-permisos\app\View\Permisos\register.ctp, line 37]
+Trace:
+include - APP\View\Permisos\register.ctp, line 37
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-12 10:39:59 Debug: Notice (8): Undefined index: Trabajador in [C:\wamp\www\sis-permisos\app\View\Permisos\register.ctp, line 28]
+Trace:
+include - APP\View\Permisos\register.ctp, line 28
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-12 10:39:59 Debug: Notice (8): Undefined index: Trabajador in [C:\wamp\www\sis-permisos\app\View\Permisos\register.ctp, line 37]
+Trace:
+include - APP\View\Permisos\register.ctp, line 37
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-12 11:37:12 Debug: Notice (8): Undefined variable: permiso in [C:\wamp\www\sis-permisos\app\View\Elements\notificaciones.ctp, line 26]
+Trace:
+include - APP\View\Elements\notificaciones.ctp, line 26
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::_renderElement() - CORE\Cake\View\View.php, line 1227
+View::element() - CORE\Cake\View\View.php, line 418
+include - APP\View\Layouts\main.ctp, line 47
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::renderLayout() - CORE\Cake\View\View.php, line 546
+View::render() - CORE\Cake\View\View.php, line 481
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:58:34 Debug: Notice (8): Undefined offset: 0 in [C:\wamp\www\sis-permisos\app\Controller\PagesController.php, line 52]
+Trace:
+PagesController::config() - APP\Controller\PagesController.php, line 52
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:58:34 Debug: Notice (8): Undefined offset: 1 in [C:\wamp\www\sis-permisos\app\Controller\PagesController.php, line 54]
+Trace:
+PagesController::config() - APP\Controller\PagesController.php, line 54
+ReflectionMethod::invokeArgs() - [internal], line ??
+Controller::invokeAction() - CORE\Cake\Controller\Controller.php, line 490
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 193
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:07 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:10 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:14 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:18 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:23 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:27 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:30 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:35 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+
+2015-11-18 13:59:39 Debug: Notice (8): Undefined index: Aprobador in [C:\wamp\www\sis-permisos\app\View\Trabajadores\view.ctp, line 33]
+Trace:
+include - APP\View\Trabajadores\view.ctp, line 33
+View::_evaluate() - CORE\Cake\View\View.php, line 971
+View::_render() - CORE\Cake\View\View.php, line 933
+View::render() - CORE\Cake\View\View.php, line 473
+Controller::render() - CORE\Cake\Controller\Controller.php, line 960
+Dispatcher::_invoke() - CORE\Cake\Routing\Dispatcher.php, line 200
+Dispatcher::dispatch() - CORE\Cake\Routing\Dispatcher.php, line 167
+[main] - APP\webroot\index.php, line 115
+

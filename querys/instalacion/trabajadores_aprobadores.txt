@@ -1,0 +1,28 @@
+
+CREATE TABLE [Permiso].[Trabajadores_Aprobadores](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[trabajador_Per_DNI] [char](8) NOT NULL,
+	[aprobador_Per_DNI] [char](8) NOT NULL,
+ CONSTRAINT [PK_Trabajadores_Aprobadores] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [Permiso].[Trabajadores_Aprobadores]  WITH CHECK ADD  CONSTRAINT [FK_Trabajadores_Aprobadores_Trabajador] FOREIGN KEY([trabajador_Per_DNI])
+REFERENCES [RRHH].[Trabajador] ([Per_DNI])
+GO
+
+ALTER TABLE [Permiso].[Trabajadores_Aprobadores] CHECK CONSTRAINT [FK_Trabajadores_Aprobadores_Trabajador]
+GO
+
+ALTER TABLE [Permiso].[Trabajadores_Aprobadores]  WITH CHECK ADD  CONSTRAINT [FK_Trabajadores_Aprobadores_Trabajador1] FOREIGN KEY([aprobador_Per_DNI])
+REFERENCES [RRHH].[Trabajador] ([Per_DNI])
+GO
+
+ALTER TABLE [Permiso].[Trabajadores_Aprobadores] CHECK CONSTRAINT [FK_Trabajadores_Aprobadores_Trabajador1]
+GO
+
+

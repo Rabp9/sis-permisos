@@ -1,0 +1,6 @@
+
+extension=php_sqlsrv_55_ts.dll
+extension=php_pdo_sqlsrv_55_ts.dll
+
+extension=php_sqlsrv_55_ts.dll
+extension=php_pdo_sqlsrv_55_ts.dll
