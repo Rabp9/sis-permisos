@@ -40,7 +40,7 @@
             ]); ?>
         </div>
         <div class="form-group">
-            <?= $this->Form->label("tipo", "Tipo",
+            <?= $this->Form->label("tipo", "Categoria Laboral",
                     ["class" => "col-sm-2 control-label"]
             ); ?>
             <?= $this->Form->input("categoria_laboral", [

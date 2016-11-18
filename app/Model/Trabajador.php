@@ -103,7 +103,17 @@ class Trabajador extends AppModel {
                 }
             }
         }
+        $fecha_cierre = strtotime($query["fecha_cierre"]);
+        $anio = date('Y', $fecha_cierre);
+        
         foreach($trabajadores as $k_trabajador => $trabajador) {
+            $query_exec = "SELECT ConTra_Monto
+                FROM RRHH.Concepto_Trabajador
+                WHERE Con_Codigo = 2 AND ConTra_InicioAnio = " . $anio . "
+                AND Per_DNI = '" . $trabajador["Trabajador"]["Per_DNI"] ."'";
+            
+            $sueldo = $this->query($query_exec)[0][0]["ConTra_Monto"];
+            
             $sumaDescuento = array();
             $sumaTotal = array();
             foreach($trabajador["Permiso"] as $k_permiso => $permiso) {
@@ -120,6 +130,8 @@ class Trabajador extends AppModel {
             }
             $trabajadores[$k_trabajador]["descuento_detalle"] = $sumaDescuento;
             $trabajadores[$k_trabajador]["descuento_total"] = Calculos::calcularSumaTotal($sumaDescuento);
+            $trabajadores[$k_trabajador]["descuento_minutos"] = Calculos::calcularDescuentoSoles($sumaDescuento, $sueldo);
+            $trabajadores[$k_trabajador]["sueldo"] = "S/. " . number_format($sueldo, 2);
             $trabajadores[$k_trabajador]["tiempo_total"] = Calculos::calcularSumaTotal($sumaTotal);
         }
         return $trabajadores;
