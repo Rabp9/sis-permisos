@@ -14,68 +14,70 @@
     ]
 ]) ?>
 <div class="dataTable_wrapper">
-    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort("id", "Código") ?></th>
-                <th><?= $this->Paginator->sort("nro_boleta", "N° Boleta") ?></th>
-                <th><?= $this->Paginator->sort("fecha_permiso", "Fecha de Permiso") ?></th>
-                <th><?= $this->Paginator->sort("hora_salida", "Hora de Salida") ?></th>
-                <th><?= $this->Paginator->sort("motivo_id", "Motivo") ?></th>
-                <th><?= $this->Paginator->sort("destino", "Destino") ?></th>
-                <th><?= $this->Paginator->sort("estado") ?></th>
-                <th class="actions"><?= __('Acciones') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach($permisos as $permiso) {
-            $opciones = $this->element("opciones", [
-                "opciones" => [
-                    ["titulo" => "Ver Permiso", 
-                        "url" => ["controller" => "Permisos", "action" => "view", $permiso["Permiso"]["id"]],
-                        "icono" => "fa fa-search"
-                    ]
-                ]
-            ]);
-            if($permiso["Permiso"]["estado"] == 4) {
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+                <tr>
+                    <th><?= $this->Paginator->sort("id", "Código") ?></th>
+                    <th><?= $this->Paginator->sort("nro_boleta", "N° Boleta") ?></th>
+                    <th><?= $this->Paginator->sort("fecha_permiso", "Fecha de Permiso") ?></th>
+                    <th><?= $this->Paginator->sort("hora_salida", "Hora de Salida") ?></th>
+                    <th><?= $this->Paginator->sort("motivo_id", "Motivo") ?></th>
+                    <th><?= $this->Paginator->sort("destino", "Destino") ?></th>
+                    <th><?= $this->Paginator->sort("estado") ?></th>
+                    <th class="actions"><?= __('Acciones') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($permisos as $permiso) {
                 $opciones = $this->element("opciones", [
                     "opciones" => [
                         ["titulo" => "Ver Permiso", 
                             "url" => ["controller" => "Permisos", "action" => "view", $permiso["Permiso"]["id"]],
                             "icono" => "fa fa-search"
-                        ],
-                        ["titulo" => "Generar Boleta", 
-                            "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "descarga"],
-                            "icono" => "fa fa-download"
-                        ],
-                        ["titulo" => "Imprimir Boleta", 
-                            "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
-                            "icono" => "fa fa-print",
-                            "target" => "_blank"
                         ]
                     ]
                 ]);
-            }
-            $nroBoleta = $permiso["Permiso"]["nro_boleta"] == null ? "" : str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT);
-            echo $this->Html->tableCells(
-                [
-                    $permiso["Permiso"]["id"],
-                    $nroBoleta,
-                    $permiso["Permiso"]["fecha_permiso"],
-                    $permiso["Permiso"]["hora_salida"],
-                    $permiso["Motivo"]["descripcion"],
-                    $permiso["Permiso"]["destino"],
-                    $permiso["Permiso"]["estado_view"],
-                    $opciones
-                ], [
-                    "class" => "info"
-                ], [
-                    "class" => "warning"
-                ]
-            );
-        } ?>
-        </tbody>
-    </table>
+                if($permiso["Permiso"]["estado"] == 4) {
+                    $opciones = $this->element("opciones", [
+                        "opciones" => [
+                            ["titulo" => "Ver Permiso", 
+                                "url" => ["controller" => "Permisos", "action" => "view", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-search"
+                            ],
+                            ["titulo" => "Generar Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "descarga"],
+                                "icono" => "fa fa-download"
+                            ],
+                            ["titulo" => "Imprimir Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
+                                "icono" => "fa fa-print",
+                                "target" => "_blank"
+                            ]
+                        ]
+                    ]);
+                }
+                $nroBoleta = $permiso["Permiso"]["nro_boleta"] == null ? "" : str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT);
+                echo $this->Html->tableCells(
+                    [
+                        $permiso["Permiso"]["id"],
+                        $nroBoleta,
+                        $permiso["Permiso"]["fecha_permiso"],
+                        $permiso["Permiso"]["hora_salida"],
+                        $permiso["Motivo"]["descripcion"],
+                        $permiso["Permiso"]["destino"],
+                        $permiso["Permiso"]["estado_view"],
+                        $opciones
+                    ], [
+                        "class" => "info"
+                    ], [
+                        "class" => "warning"
+                    ]
+                );
+            } ?>
+            </tbody>
+        </table>
+    </div>
     <nav>
         <ul class="pagination">
     <?php

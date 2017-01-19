@@ -17,7 +17,7 @@
 @media (max-width: 768px) {
 
     .header {
-        position: absolute;
+       /* position: absolute;*/
     }
 
     /*sidebar*/

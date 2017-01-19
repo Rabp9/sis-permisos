@@ -62,8 +62,9 @@ class Trabajador extends AppModel {
             $query["recursive"] = -1;
             $query["conditions"]["Trabajador.Per_DNI"] = $dnis;
             $query["fields"] = array("Trabajador.Per_DNI", "Trabajador.nombre_completo");
+            $query["order"] = array("Trabajador.nombre_completo ASC");
             return $query;
-        }           
+        }
         $results = Set::combine($results, '{n}.Trabajador.Per_DNI', '{n}.Trabajador.nombre_completo');
         return $results;
     }

@@ -75,7 +75,7 @@
                     <a href="#"><i class="fa fa-book"></i> Manual</a>
                 </li>
                 <li>
-                    <a href="<?= $this->Html->url(array("controller" => "Users", "action" => "logout")) ?>"><i class="fa "></i> Cerrar Sesión</a>
+                    <a href="<?= $this->Html->url(array("controller" => "Users", "action" => "logout")) ?>"><i class="fa fa-sign-out"></i> Cerrar Sesión</a>
                 </li>
             </ul>
         </li>

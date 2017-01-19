@@ -46,113 +46,115 @@
  ?>
 <?= $this->Form->end() ?>
 <div class="dataTable_wrapper">
-    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-        <thead>
-            <tr>
-                <th><?= $this->Paginator->sort("id", "Código") ?></th>
-                <th><?= $this->Paginator->sort("nro_boleta", "N° Boleta") ?></th>
-                <th><?= $this->Paginator->sort("Per_DNI", "Trabajador") ?></th>
-                <th><?= $this->Paginator->sort("fecha_permiso", "Fecha de Permiso") ?></th>
-                <th><?= $this->Paginator->sort("hora_salida", "Hora de Salida") ?></th>
-                <th><?= $this->Paginator->sort("motivo_id", "Motivo") ?></th>
-                <th><?= $this->Paginator->sort("estado") ?></th>
-                <th class="actions"><?= __('Acciones') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php foreach($permisos as $permiso) {
-            if($permiso["Permiso"]["estado"] == 1) {
-                $opciones = $this->element("opciones", [
-                    "opciones" => [
-                        ["titulo" => "Ver Permiso", 
-                            "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-search"
-                        ],
-                        ["titulo" => "Aprobar", 
-                            "url" => ["controller" => "Permisos", "action" => "aprobar", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-check-circle",
-                            "tipo" => "postlink"
-                        ],
-                        ["titulo" => "Denegar", 
-                            "url" => ["controller" => "Permisos", "action" => "denegar", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-minus-circle",
-                            "tipo" => "postlink"
-                        ],
-                    ]
-                ]);
-            } elseif($permiso["Permiso"]["estado"] == 2) {
-                $opciones = $this->element("opciones", [
-                    "opciones" => [
-                        ["titulo" => "Ver Permiso", 
-                            "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-search"
-                        ],
-                        ["titulo" => "Registrar Retorno", 
-                            "url" => ["controller" => "Permisos", "action" => "retorno", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-pencil",
-                            "tipo" => "modal",
-                            "metadatos" => array(
-                                "data-toggle" => "modal",
-                                "data-target" => "#mdlRegistrarRetorno",
-                                "data-id" => $permiso["Permiso"]["id"],
-                                "data-hora-min" => $permiso["Permiso"]["hora_salida"]
-                            )
-                        ],
-                    ]
-                ]);
-            } elseif($permiso["Permiso"]["estado"] == 3) {
-                $opciones = $this->element("opciones", [
-                    "opciones" => [
-                        ["titulo" => "Ver Permiso", 
-                            "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-search"
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+                <tr>
+                    <th><?= $this->Paginator->sort("id", "Código") ?></th>
+                    <th><?= $this->Paginator->sort("nro_boleta", "N° Boleta") ?></th>
+                    <th><?= $this->Paginator->sort("Per_DNI", "Trabajador") ?></th>
+                    <th><?= $this->Paginator->sort("fecha_permiso", "Fecha de Permiso") ?></th>
+                    <th><?= $this->Paginator->sort("hora_salida", "Hora de Salida") ?></th>
+                    <th><?= $this->Paginator->sort("motivo_id", "Motivo") ?></th>
+                    <th><?= $this->Paginator->sort("estado") ?></th>
+                    <th class="actions"><?= __('Acciones') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach($permisos as $permiso) {
+                if($permiso["Permiso"]["estado"] == 1) {
+                    $opciones = $this->element("opciones", [
+                        "opciones" => [
+                            ["titulo" => "Ver Permiso", 
+                                "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-search"
+                            ],
+                            ["titulo" => "Aprobar", 
+                                "url" => ["controller" => "Permisos", "action" => "aprobar", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-check-circle",
+                                "tipo" => "postlink"
+                            ],
+                            ["titulo" => "Denegar", 
+                                "url" => ["controller" => "Permisos", "action" => "denegar", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-minus-circle",
+                                "tipo" => "postlink"
+                            ],
                         ]
-                    ]
-                ]);
-            } elseif($permiso["Permiso"]["estado"] == 4) {
-                $opciones = $this->element("opciones", [
-                    "opciones" => [
-                        ["titulo" => "Ver Permiso", 
-                            "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-search"
-                        ],
-                        ["titulo" => "Generar Boleta", 
-                            "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "descarga"],
-                            "icono" => "fa fa-download"
-                        ],
-                        ["titulo" => "Imprimir Boleta", 
-                            "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
-                            "icono" => "fa fa-print",
-                            "target" => "_blank"
-                        ],
-                        ["titulo" => "Eliminar retorno", 
-                            "url" => ["controller" => "Permisos", "action" => "delete_retorno", $permiso["Permiso"]["id"]],
-                            "icono" => "fa fa-backward",
-                            "tipo" => "postlink"
+                    ]);
+                } elseif($permiso["Permiso"]["estado"] == 2) {
+                    $opciones = $this->element("opciones", [
+                        "opciones" => [
+                            ["titulo" => "Ver Permiso", 
+                                "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-search"
+                            ],
+                            ["titulo" => "Registrar Retorno", 
+                                "url" => ["controller" => "Permisos", "action" => "retorno", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-pencil",
+                                "tipo" => "modal",
+                                "metadatos" => array(
+                                    "data-toggle" => "modal",
+                                    "data-target" => "#mdlRegistrarRetorno",
+                                    "data-id" => $permiso["Permiso"]["id"],
+                                    "data-hora-min" => $permiso["Permiso"]["hora_salida"]
+                                )
+                            ],
                         ]
+                    ]);
+                } elseif($permiso["Permiso"]["estado"] == 3) {
+                    $opciones = $this->element("opciones", [
+                        "opciones" => [
+                            ["titulo" => "Ver Permiso", 
+                                "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-search"
+                            ]
+                        ]
+                    ]);
+                } elseif($permiso["Permiso"]["estado"] == 4) {
+                    $opciones = $this->element("opciones", [
+                        "opciones" => [
+                            ["titulo" => "Ver Permiso", 
+                                "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-search"
+                            ],
+                            ["titulo" => "Generar Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "descarga"],
+                                "icono" => "fa fa-download"
+                            ],
+                            ["titulo" => "Imprimir Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
+                                "icono" => "fa fa-print",
+                                "target" => "_blank"
+                            ],
+                            ["titulo" => "Eliminar retorno", 
+                                "url" => ["controller" => "Permisos", "action" => "delete_retorno", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-backward",
+                                "tipo" => "postlink"
+                            ]
+                        ]
+                    ]);
+                }
+                $nroBoleta = $permiso["Permiso"]["nro_boleta"] == null ? "" : str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT);
+                echo $this->Html->tableCells(
+                    [
+                        $permiso["Permiso"]["id"],
+                        $nroBoleta,
+                        $permiso["Trabajador"]["nombre_completo"],
+                        $permiso["Permiso"]["fecha_permiso"],
+                        $permiso["Permiso"]["hora_salida"],
+                        $permiso["Motivo"]["descripcion"],
+                        $permiso["Permiso"]["estado_view"],
+                        $opciones
+                    ], [
+                        "class" => "info"
+                    ], [
+                        "class" => "warning"
                     ]
-                ]);
-            }
-            $nroBoleta = $permiso["Permiso"]["nro_boleta"] == null ? "" : str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT);
-            echo $this->Html->tableCells(
-                [
-                    $permiso["Permiso"]["id"],
-                    $nroBoleta,
-                    $permiso["Trabajador"]["nombre_completo"],
-                    $permiso["Permiso"]["fecha_permiso"],
-                    $permiso["Permiso"]["hora_salida"],
-                    $permiso["Motivo"]["descripcion"],
-                    $permiso["Permiso"]["estado_view"],
-                    $opciones
-                ], [
-                    "class" => "info"
-                ], [
-                    "class" => "warning"
-                ]
-            );
-        } ?>
-        </tbody>
-    </table>
+                );
+            } ?>
+            </tbody>
+        </table>
+    </div>
     <nav>
         <ul class="pagination">
     <?php

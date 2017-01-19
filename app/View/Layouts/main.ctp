@@ -37,7 +37,7 @@
 <body>
     <!-- container section start -->
     <section id="container" class="">
-        <header class="header dark-bg">
+        <header class="header dark-bg navbar-fixed-top">
             <div class="toggle-nav">
                 <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom">
                     <i class="icon_menu icon-inverted"></i>
@@ -45,7 +45,8 @@
             </div>
 
             <!--logo start-->
-            <a href="<?= $this->Html->url(array("controller" => "Pages", "action" => "home")) ?>" class="logo"><?= $this->Html->image("logo.jpg") ?> <span class="lite"><b>Sistema de Permisos</b></span></a>
+            <a href="<?= $this->Html->url(array("controller" => "Pages", "action" => "home")) ?>" class="logo visible-lg visible-md"><?= $this->Html->image("logo.jpg") ?></a>
+            <a href="<?= $this->Html->url(array("controller" => "Pages", "action" => "home")) ?>" class="logo"><span class="lite"><b>Sistema de Permisos</b></span></a>
             <!--logo end-->
 
             <?= $this->element("notificaciones"); ?>

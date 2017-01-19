@@ -79,6 +79,18 @@
                 </a>
             </li>
             <?php } ?>
+            <li class="visible-xs <?= $controller == "Users" && $action == "datos" ? "active" : "" ?>">
+                <a class="" href="<?= $this->Html->url(array("controller" => "Users", "action" => "datos")) ?>">
+                    <i class="icon_profile"></i>
+                    <span>Mi Perfil</span>
+                </a>
+            </li>
+            <li class="visible-xs <?= $controller == "Users" && $action == "logout" ? "active" : "" ?>">
+                <a class="" href="<?= $this->Html->url(array("controller" => "Users", "action" => "logout")) ?>">
+                    <i class="fa fa-sign-out"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </li>
         </ul>
         <!-- sidebar menu end-->
     </div>
