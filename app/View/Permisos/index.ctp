@@ -56,6 +56,20 @@
                             ]
                         ]
                     ]);
+                } elseif ($permiso["Permiso"]["estado"] == 2) {
+                    $opciones = $this->element("opciones", [
+                        "opciones" => [
+                            ["titulo" => "Ver Permiso", 
+                                "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
+                                "icono" => "fa fa-search"
+                            ],
+                            ["titulo" => "Imprimir Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
+                                "icono" => "fa fa-print",
+                                "target" => "_blank"
+                            ]
+                        ]
+                    ]);
                 }
                 $nroBoleta = $permiso["Permiso"]["nro_boleta"] == null ? "" : str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT);
                 echo $this->Html->tableCells(

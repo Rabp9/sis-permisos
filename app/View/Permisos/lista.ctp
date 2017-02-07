@@ -99,6 +99,11 @@
                                     "data-hora-min" => $permiso["Permiso"]["hora_salida"]
                                 )
                             ],
+                            ["titulo" => "Imprimir Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
+                                "icono" => "fa fa-print",
+                                "target" => "_blank"
+                            ]
                         ]
                     ]);
                 } elseif($permiso["Permiso"]["estado"] == 3) {
@@ -141,8 +146,8 @@
                         $nroBoleta,
                         $permiso["Trabajador"]["nombre_completo"],
                         $permiso["Permiso"]["fecha_permiso"],
-                        $permiso["Permiso"]["hora_salida"],
-                        $permiso["Motivo"]["descripcion"],
+                        $permiso["Permiso"]["hora_salida"],              
+                        "<span style='cursor: default;' title='" . $permiso["Permiso"]["destino"] . "'>" . $permiso["Motivo"]["descripcion"] . "</span>",
                         $permiso["Permiso"]["estado_view"],
                         $opciones
                     ], [

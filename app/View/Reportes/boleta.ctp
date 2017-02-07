@@ -11,7 +11,7 @@
         $iniciales = Calculos::iniciales($permiso["User_aprobacion"]["Trabajador"]["nombre_completo"]);
     else
         $iniciales = "Admin.";
-     // Original
+    // Original
     // Header
     $pdf->SetFont("Georgia", "B", 14);
     $pdf->Image("img/logo.jpg", 55, 5);    
@@ -73,22 +73,27 @@
     
     $y_7 = $pdf->GetY();
     $pdf->Cell(4, 2, "", 0, 0, "C");
-    $pdf->Cell(56, 2, "", "B", 0, "C");
+    $pdf->Cell(34, 2, "", "B", 0, "C");
     $pdf->Cell(8, 2, "", 0, 0, "C");
-    $pdf->Cell(56, 2, "", "B", 0, "C");
+    $pdf->Cell(34, 2, "", "B", 0, "C");
+    $pdf->Cell(8, 2, "", 0, 0, "C");
+    $pdf->Cell(34, 2, "", "B", 0, "C");
     $pdf->Cell(4, 2, "", 0, 1, "C");
     
+    $pdf->SetFont("Georgia", "", 8);
     $y_8 = $pdf->GetY();
-    $pdf->Cell(64, 8, utf8_decode("JEFE QUE AUTORIZA"), 0, 0, "C");
-    $pdf->Cell(64, 8, utf8_decode("TRABAJADOR"), 0, 1, "C");
+    $pdf->Cell(42, 8, utf8_decode("JEFE QUE AUTORIZA"), 0, 0, "C");
+    $pdf->Cell(42, 8, utf8_decode("JEFE DE R.R.H.H."), 0, 0, "C");
+    $pdf->Cell(42, 8, utf8_decode("TRABAJADOR"), 0, 1, "C");
     
     $y_9 = $pdf->GetY();
     $pdf->SetFont("Georgia", "", 9);
-    $pdf->Cell(64, 8, "SELLO Y FIRMA", 0, 0, "C");
-    $pdf->Cell(64, 8, "FIRMA", 0, 1, "C");
+    $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
+    $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
+    $pdf->Cell(42, 8, "FIRMA", 0, 1, "C");
     
     $y_10 = $pdf->GetY();
-    $pdf->Cell(64, 8, utf8_decode($iniciales), 0, 1, "C");
+    $pdf->Cell(42, 8, utf8_decode($iniciales), 0, 1, "C");
     
     // Copia
     // Header
@@ -155,22 +160,26 @@
     
     $pdf->SetXY(159, $y_7);
     $pdf->Cell(4, 2, "", 0, 0, "C");
-    $pdf->Cell(56, 2, "", "B", 0, "C");
+    $pdf->Cell(32, 2, "", "B", 0, "C");
     $pdf->Cell(8, 2, "", 0, 0, "C");
-    $pdf->Cell(56, 2, "", "B", 0, "C");
+    $pdf->Cell(32, 2, "", "B", 0, "C");
+    $pdf->Cell(8, 2, "", 0, 0, "C");
+    $pdf->Cell(32, 2, "", "B", 0, "C");
     $pdf->Cell(4, 2, "", 0, 1, "C");
     
     $pdf->SetXY(159, $y_8);
-    $pdf->Cell(64, 8, utf8_decode("JEFE QUE AUTORIZA"), 0, 0, "C");
-    $pdf->Cell(64, 8, utf8_decode("TRABAJADOR"), 0, 1, "C");
+    $pdf->Cell(42, 8, utf8_decode("JEFE QUE AUTORIZA"), 0, 0, "C");
+    $pdf->Cell(42, 8, utf8_decode("JEFE DE R.R.H.H."), 0, 0, "C");
+    $pdf->Cell(42, 8, utf8_decode("TRABAJADOR"), 0, 1, "C");
     
     $pdf->SetXY(159, $y_9);
     $pdf->SetFont("Georgia", "", 9);
-    $pdf->Cell(64, 8, "SELLO Y FIRMA", 0, 0, "C");
-    $pdf->Cell(64, 8, "FIRMA", 0, 1, "C");
+    $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
+    $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
+    $pdf->Cell(42, 8, "FIRMA", 0, 1, "C");
     
     $pdf->SetXY(159, $y_10);
-    $pdf->Cell(64, 8, utf8_decode($iniciales), 0, 1, "C");  
+    $pdf->Cell(42, 8, utf8_decode($iniciales), 0, 1, "C");  
     
     if($modo == "descarga") {
     $pdf->Output("Boleta_" . str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT) . ".pdf", "D");

@@ -1,1 +1,0 @@
-Config|a:3:{s:9:"userAgent";s:32:"7e3e7b553b2a4d45629dd52e2338a980";s:4:"time";i:1476925286;s:9:"countdown";i:10;}Message|a:1:{s:4:"auth";a:4:{s:7:"message";s:59:"No tiene los permisos necesarios para realizar esta acción";s:3:"key";s:4:"auth";s:7:"element";s:13:"Flash/default";s:6:"params";a:0:{}}}Auth|a:1:{s:8:"redirect";s:15:"/Permisos/lista";}

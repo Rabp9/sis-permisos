@@ -5,7 +5,7 @@
     $group = $user["Group"]["descripcion"];
 ?>
 <aside>
-    <div id="sidebar"  class="nav-collapse ">
+    <div id="sidebar"  class="nav-collapse">
         <!-- sidebar menu start-->
         <ul class="sidebar-menu">                
             <li class="<?= $controller == "Pages" && $action == "home" ? "active" : "" ?>">
