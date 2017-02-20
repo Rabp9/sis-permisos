@@ -35,6 +35,11 @@
                         ["titulo" => "Ver Permiso", 
                             "url" => ["controller" => "Permisos", "action" => "view", $permiso["Permiso"]["id"]],
                             "icono" => "fa fa-search"
+                        ],
+                        ["titulo" => "Imprimir Boleta", 
+                            "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
+                            "icono" => "fa fa-print",
+                            "target" => "_blank"
                         ]
                     ]
                 ]);
@@ -62,11 +67,6 @@
                             ["titulo" => "Ver Permiso", 
                                 "url" => ["controller" => "Permisos", "action" => "viewlista", $permiso["Permiso"]["id"]],
                                 "icono" => "fa fa-search"
-                            ],
-                            ["titulo" => "Imprimir Boleta", 
-                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
-                                "icono" => "fa fa-print",
-                                "target" => "_blank"
                             ]
                         ]
                     ]);

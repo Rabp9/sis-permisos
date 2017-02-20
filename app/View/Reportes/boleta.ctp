@@ -91,10 +91,10 @@
     $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
     $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
     $pdf->Cell(42, 8, "FIRMA", 0, 1, "C");
-    
+    /*
     $y_10 = $pdf->GetY();
     $pdf->Cell(42, 8, utf8_decode($iniciales), 0, 1, "C");
-    
+    */
     // Copia
     // Header
     $pdf->SetXY(159, 10);
@@ -177,13 +177,13 @@
     $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
     $pdf->Cell(42, 8, "SELLO Y FIRMA", 0, 0, "C");
     $pdf->Cell(42, 8, "FIRMA", 0, 1, "C");
-    
+    /*
     $pdf->SetXY(159, $y_10);
     $pdf->Cell(42, 8, utf8_decode($iniciales), 0, 1, "C");  
-    
+    */
     if($modo == "descarga") {
-    $pdf->Output("Boleta_" . str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT) . ".pdf", "D");
+        $pdf->Output("Boleta_" . str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT) . ".pdf", "D");
     } else {
-    $pdf->Output("Boleta_" . str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT) . ".pdf", "I");
+        $pdf->Output("Boleta_" . str_pad($permiso["Permiso"]["nro_boleta"], 4, "0", STR_PAD_LEFT) . ".pdf", "I");
     }
 ?>
