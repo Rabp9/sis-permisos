@@ -1,0 +1,1 @@
+Config|a:3:{s:9:"userAgent";s:32:"8ce1bea2f653ca2ce71bdf6183bef333";s:4:"time";i:1499371491;s:9:"countdown";i:10;}Message|a:1:{s:4:"auth";a:4:{s:7:"message";s:59:"No tiene los permisos necesarios para realizar esta acción";s:3:"key";s:4:"auth";s:7:"element";s:13:"Flash/default";s:6:"params";a:0:{}}}Auth|a:1:{s:8:"redirect";s:1:"/";}
