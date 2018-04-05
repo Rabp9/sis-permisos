@@ -21,6 +21,7 @@
     $permisos_mis = false;
     $permisos_nuevo = false;
     $permisos_lista = false;
+    $permisos_generar = false;
     $reportes_general = false;
     $reportes_por_trabajador = false;
 ?>
@@ -29,9 +30,10 @@
         $mantenimiento_motivos = true;
         $mantenimiento_trabajadores = true;
         $permisos_lista = true;
+        $permisos_generar = true;
         $reportes_general = true;
         $reportes_por_trabajador = true;
-        $final = 5;
+        $final = 6;
     } elseif($group == "Aprobador") {
         $permisos_mis = true;
         $permisos_nuevo = true;
@@ -41,9 +43,10 @@
         $permisos_mis = true;
         $permisos_nuevo = true;
         $permisos_lista = true;
+        $permisos_generar = true;
         $reportes_general = true;
         $reportes_por_trabajador = true;
-        $final = 5;
+        $final = 6;
     } elseif($group == "Usuario") {
         $permisos_mis = true;
         $permisos_nuevo = true;
@@ -162,6 +165,29 @@
             <div class="info-box <?= $estilos[$estilo]?>">
                 <i class="icon_table"></i>
                 <div class="count">Lista Permisos</div>
+                <div class="title">Permisos</div>
+            </div><!--/.info-box-->		
+        </a>	
+    </div><!--/.col-->
+<?php   $estilo = !$estilo;
+        $count++;
+        if($count == $final) {
+            echo $cerrar;
+        }
+    }
+    if($permisos_generar) {
+        if($count == 0) {
+            echo $abrir;
+        } elseif($count % 3 == 0) {
+            echo $cerrar_abrir;
+            $estilo = !$estilo;
+        }
+?>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <a href="<?= $this->Html->url(array("controller" => "Permisos", "action" => "generar")) ?>">
+            <div class="info-box <?= $estilos[$estilo]?>">
+                <i class="icon_archive"></i>
+                <div class="count">Generar Permiso</div>
                 <div class="title">Permisos</div>
             </div><!--/.info-box-->		
         </a>	

@@ -58,6 +58,14 @@
                 </a>
             </li>
             <?php } ?>
+            <?php if($group == "RRHH") { ?>
+            <li class="<?= $controller == "Permisos" && $action == "generar" ? "active" : "" ?>">
+                <a class="" href="<?= $this->Html->url(["controller" => "Permisos", "action" => "generar"]) ?>">
+                    <i class="icon_archive"></i>
+                    <span>Generar Permiso</span>
+                </a>
+            </li>
+            <?php } ?>
             <?php if($group != "Aprobador" && $group != "Usuario") { ?>
             <li class="sub-menu">
                 <a href="javascript:;">

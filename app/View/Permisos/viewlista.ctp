@@ -62,6 +62,9 @@
 <h5><strong>Fecha y Hora de Registro de Retorno</strong></h5>
 <p><?= h($permiso["Permiso"]["hora_registro_retorno"] == null ? $vacio : $permiso["Permiso"]["hora_registro_retorno"]) ?></p>
 
+<h5><strong>Usuario que genera el permiso</strong></h5>
+<p><?= h($permiso["User_genera"]["Usu_Login"] == null ? $vacio : $permiso["User_genera"]["Usu_Login"] . " (IP:" . $permiso['Permiso']['ip_registro'] . ", MAC: " . $permiso['Permiso']['mac_registro'] . ")") ?></p>
+
 <h5><strong>Usuario que aprueba el permiso</strong></h5>
 <p><?= h($permiso["User_aprobacion"]["Usu_Login"] == null ? $vacio : $permiso["User_aprobacion"]["Usu_Login"]) ?></p>
 

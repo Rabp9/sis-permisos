@@ -105,14 +105,38 @@ class PermisosController extends AppController {
         $this->set(compact("permiso", "admin"));
     }
        
-    public function register($Per_DNI = null) {
+    public function register() {
         $this->layout = "main";
         
         $this->Permiso->create();
         if ($this->request->is('post')) {
             $trabajador = $this->Permiso->Trabajador->findByPerDni($this->request->data["Permiso"]["Per_DNI"]);
             $this->request->data["Permiso"]["Are_Codigo"] = $trabajador["Historico_Cargo"]["Are_Codigo"];
+            $this->request->data["Permiso"]["Usu_Codigo_registro"] = $this->Auth->user()["Usu_Codigo"];
+            $this->request->data["Permiso"]["ip_registro"] = $this->request->clientIp();
+            
+            $ipAddress = $_SERVER['REMOTE_ADDR'];
+            $macAddr = false;
+
+            #run the external command, break output into lines
+            $arp = `arp -a $ipAddress`;
+            $lines = explode("\n", $arp);
+
+            #look for the output line describing our IP address
+            foreach ($lines as $line) {
+               $cols = preg_split('/\s+/', trim($line));
+               if ($cols[0] == $ipAddress)
+               {
+                   $macAddr = $cols[1];
+               }
+            }
+           
+            $this->request->data["Permiso"]["mac_registro"] = $macAddr;
             if($this->Permiso->save($this->request->data)) {
+                
+                $user = $this->Auth->user();
+                CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " registró el Permiso de código: " . $this->Permiso->id);
+                
                 $this->Session->setFlash(__('El Permiso ha sido registrado correctamente'), "flash_bootstrap");
                 return $this->redirect(['action' => 'index']);
             } else {
@@ -120,9 +144,7 @@ class PermisosController extends AppController {
             }
         }
         $this->Permiso->Trabajador->recursive = -1;
-        if($Per_DNI == null) {
-            $Per_DNI = $this->Auth->user()["Per_DNI"];
-        }
+        $Per_DNI = $this->Auth->user()["Per_DNI"];
         $trabajador = $this->Permiso->Trabajador->findByPerDni($Per_DNI);
         $this->Session->write("Trabajador.DNI", $Per_DNI);
         $motivos = $this->Permiso->Motivo->find("list", array(
@@ -146,6 +168,11 @@ class PermisosController extends AppController {
             )
         );
         if ($this->Permiso->save($data)) {
+            // Log
+            
+            $user = $this->Auth->user();
+            CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " aprobó el Permiso de código: " . $this->Permiso->id);
+                
             $this->Session->setFlash(__("El Permiso de código: %s ha sido Aprobado.", h($id)), "flash_bootstrap");
             return $this->redirect(array("action" => "lista"));
         }
@@ -164,6 +191,10 @@ class PermisosController extends AppController {
             )
         );
         if ($this->Permiso->save($data)) {
+            
+            $user = $this->Auth->user();
+            CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " denegó el Permiso de código: " . $this->Permiso->id);
+                
             $this->Session->setFlash(__("El Permiso de código: %s ha sido denegado.", h($id)), "flash_bootstrap");
             return $this->redirect(array("action" => "lista"));
         }
@@ -183,6 +214,10 @@ class PermisosController extends AppController {
         );
         $data = Set::pushDiff($data, $this->request->data);
         if ($this->Permiso->save($data)) {
+            
+            $user = $this->Auth->user();
+            CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " registró el retorno del Permiso de código: " . $this->Permiso->id);
+                
             $this->Session->setFlash(__("Se registró la hora de retorno correctamente en el Permiso de código: %s.", h($id)), "flash_bootstrap_link", array(
                 "link_text" => "Generar Boleta",
                 "link_url" => array(
@@ -268,10 +303,68 @@ class PermisosController extends AppController {
             "estado" => 2
         );
         if($this->Permiso->updateAll($data, array("id" => $id))) {
+            
+            $user = $this->Auth->user();
+            CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " eliminó el registro de retorno del Permiso de código: " . $id);
+
             $this->Session->setFlash(__("El registro de retorno del Permiso de código: %s ha sido eliminado.", h($id)), "flash_bootstrap");
             return $this->redirect(array("action" => "lista"));
         }
         $this->Session->setFlash(__("El registro de retorno del Permiso de código: %s no ha sido eliminado.", h($id)), "flash_bootstrap");
         return $this->redirect(array("action" => "lista"));
+    }
+    
+    public function generar() {
+        $this->layout = "main";
+        $this->Permiso->create();
+        if ($this->request->is('post')) {
+            $trabajador = $this->Permiso->Trabajador->findByPerDni($this->request->data["Permiso"]["Per_DNI"]);
+            $this->request->data["Permiso"]["Are_Codigo"] = $trabajador["Historico_Cargo"]["Are_Codigo"];
+            $this->request->data["Permiso"]["Usu_Codigo_registro"] = $this->Auth->user()["Usu_Codigo"];
+            $this->request->data["Permiso"]["ip_registro"] = $this->request->clientIp();
+            
+            $ipAddress = $_SERVER['REMOTE_ADDR'];
+            $macAddr = false;
+
+            #run the external command, break output into lines
+            $arp = `arp -a $ipAddress`;
+            $lines = explode("\n", $arp);
+
+            #look for the output line describing our IP address
+            foreach ($lines as $line) {
+               $cols = preg_split('/\s+/', trim($line));
+               if ($cols[0] == $ipAddress)
+               {
+                   $macAddr = $cols[1];
+               }
+            }
+           
+            $this->request->data["Permiso"]["mac_registro"] = $macAddr;
+            
+            if($this->Permiso->save($this->request->data)) {
+                
+                $user = $this->Auth->user();
+                CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " generó el Permiso de código: " . $this->Permiso->id);
+
+                $this->Session->setFlash(__('El Permiso ha sido registrado correctamente'), "flash_bootstrap");
+                return $this->redirect(['action' => 'lista']);
+            } else {
+            $this->Session->setFlash(__("No fue posible registrar al Permiso."), "flash_bootstrap");
+            }
+        }
+        $motivos = $this->Permiso->Motivo->find("list", array(
+           "conditions" => array("Motivo.estado" => 1) 
+        ));
+        $trabajadores = $this->Permiso->Trabajador->find("list_disponibles");
+        $hora_entrada = $this->Config->findByClave("hora_entrada");
+        $hora_salida = $this->Config->findByClave("hora_salida");
+        $this->set(compact("permiso", "motivos", "trabajadores", "hora_entrada", "hora_salida"));
+    }
+    
+    public function beforeRender() {
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " ingresó a  "
+            . $this->request->params['controller'] . "->" . $this->request->params['action']);
+        parent::beforeRender();
     }
 }

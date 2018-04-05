@@ -40,4 +40,11 @@ class GroupsController extends AppController {
             $this->Session->setFlash(__("No fue posible registrar al Grupo."), "flash_bootstrap");
         }
     }
+    
+    public function beforeRender() {
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " ingresó a  "
+            . $this->request->params['controller'] . "->" . $this->request->params['action']);
+        parent::beforeRender();
+    }
 }

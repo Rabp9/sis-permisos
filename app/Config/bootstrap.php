@@ -109,3 +109,8 @@ CakeLog::config('error', array(
 	'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
 	'file' => 'error',
 ));
+
+CakeLog::config('custom_path', array(
+    'engine' => 'File',
+    'path' => '../../logs/'
+));

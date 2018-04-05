@@ -54,4 +54,11 @@ class PagesController extends AppController {
             $this->request->data[1]["Config"]["valor"] = $config[1]["Config"]["valor"];
         }
     }
+    
+    public function beforeRender() {
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " ingresó a  "
+            . $this->request->params['controller'] . "->" . $this->request->params['action']);
+        parent::beforeRender();
+    }
 }

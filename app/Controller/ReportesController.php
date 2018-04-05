@@ -41,6 +41,10 @@ class ReportesController extends AppController {
 
             $this->response->type("application/pdf");
             
+            $user = $this->Auth->user();
+            CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " generó el reporte General con "
+                . "intervalo de fechas: " . $fecha_inicio . ' - ' . $fecha_cierre . ', de los trabajadores de categoría laboral: ' . $categoria_laboral);
+                
             return $this->render("reporte_general");
         }
     }
@@ -80,6 +84,11 @@ class ReportesController extends AppController {
                 $render = "reporte_por_trabajador_detallado";
             else
                 $render = "reporte_por_trabajador_generico";
+            
+            $user = $this->Auth->user();
+            CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " generó el reporte por trabajador con "
+                . "intervalo de fechas: " . $fecha_inicio . ' - ' . $fecha_cierre . ', del trabajador con DNI: ' . $Per_DNI);
+                
             return $this->render($render);
         }
         $trabajadores = $this->Trabajador->find("list_disponibles");
@@ -99,6 +108,17 @@ class ReportesController extends AppController {
         // Salida de la Información
         $this->set(compact("permiso", "pdf", "modo"));
         
+        
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " generó la boleta del Permiso de código: " . $id);
+                
         $this->response->type("application/pdf");
+    }
+    
+    public function beforeRender() {
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " ingresó a  "
+            . $this->request->params['controller'] . "->" . $this->request->params['action']);
+        parent::beforeRender();
     }
 }

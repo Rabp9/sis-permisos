@@ -15,6 +15,10 @@ class Permiso extends AppModel {
         "Trabajador" => array(
             "foreignKey" => "Per_DNI"
         ),
+        "User_genera" => array(
+            "className" => "User",
+            "foreignKey" => "Usu_Codigo_registro"
+        ),
         "User_aprobacion" => array(
             "className" => "User",
             "foreignKey" => "Usu_Codigo_aprobacion"

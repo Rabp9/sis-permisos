@@ -43,6 +43,10 @@ class MotivosController extends AppController {
         if ($this->request->is('post')) {
             $this->Motivo->create();
             if ($this->Motivo->save($this->request->data)) {
+                
+                $user = $this->Auth->user();
+                CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " registró el Motivo de código: " . $this->Motivo->id);
+                
                 $this->Session->setFlash(__("El Motivo ha sido registrado correctamente."), "flash_bootstrap");
                 return $this->redirect(array('action' => 'index'));
             } else {
@@ -66,6 +70,10 @@ class MotivosController extends AppController {
         if ($this->request->is(array("post", "put"))) {
             $this->Motivo->id = $id;
             if ($this->Motivo->save($this->request->data)) {
+                
+                $user = $this->Auth->user();
+                CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " modificó el Motivo de código: " . $this->Motivo->id);
+                
                 $this->Session->setFlash(__("El Motivo ha sido actualizado."), "flash_bootstrap");
                 return $this->redirect(array("action" => "index"));
             }
@@ -85,5 +93,12 @@ class MotivosController extends AppController {
             $this->Session->setFlash(__("El Motivo de código: %s ha sido eliminado.", h($id)), "flash_bootstrap");
             return $this->redirect(array("action" => "index"));
         }
+    }
+    
+    public function beforeFilter() {
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " ingresó a  "
+            . $this->request->params['controller'] . "->" . $this->request->params['action']);
+        parent::beforeFilter();
     }
 }

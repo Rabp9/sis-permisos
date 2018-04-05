@@ -49,25 +49,6 @@ class TrabajadoresController extends AppController {
     }
 
     /**
-     * add method
-     *
-     * @return void
-     */
-    public function add() {
-        $this->layout = "main";
-        
-        if ($this->request->is('post')) {
-            $this->Motivo->create();
-            if ($this->Motivo->save($this->request->data)) {
-                $this->Session->setFlash(__("El Motivo ha sido registrado correctamente."), "flash_bootstrap");
-                return $this->redirect(array('action' => 'index'));
-            } else {
-                $this->Session->setFlash(__("El motivo no pudo ser registrado correctamente."), "flash_bootstrap");
-            }
-        }
-    }
-
-    /**
      * edit method
      *
      * @throws NotFoundException
@@ -86,6 +67,10 @@ class TrabajadoresController extends AppController {
             $this->Trabajador->User->id = $this->request->data["User"]["Usu_Codigo"];
             if ($this->Trabajador->User->save($this->request->data)) {
                 if($this->Trabajador->Trabajadores_Aprobador->save($this->request->data)) {
+                    
+                    $user = $this->Auth->user();
+                    CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " modificó la información del Trabajdor de DNI:" . $Per_DNI);
+
                     $ds->commit();
                     $this->Session->setFlash(__("El Trabajador ha sido actualizado."), "flash_bootstrap");
                     return $this->redirect(array("action" => "index"));
@@ -107,5 +92,12 @@ class TrabajadoresController extends AppController {
             $this->request->data = $trabajador;
         }
         $this->set(compact("trabajador", "groups", "trabajadores"));
+    }
+    
+    public function beforeRender() {
+        $user = $this->Auth->user();
+        CakeLog::write('actividad', "El usuario " . $user['Usu_Login'] . " ingresó a  "
+            . $this->request->params['controller'] . "->" . $this->request->params['action']);
+        parent::beforeRender();
     }
 }

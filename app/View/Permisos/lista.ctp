@@ -78,11 +78,6 @@
                                 "url" => ["controller" => "Permisos", "action" => "denegar", $permiso["Permiso"]["id"]],
                                 "icono" => "fa fa-minus-circle",
                                 "tipo" => "postlink"
-                            ],
-                            ["titulo" => "Imprimir Boleta", 
-                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
-                                "icono" => "fa fa-print",
-                                "target" => "_blank"
                             ]
                         ]
                     ]);
@@ -103,7 +98,12 @@
                                     "data-id" => $permiso["Permiso"]["id"],
                                     "data-hora-min" => $permiso["Permiso"]["hora_salida"]
                                 )
-                            ]
+                            ],
+                            /*["titulo" => "Imprimir Boleta", 
+                                "url" => ["controller" => "Reportes", "action" => "boleta", $permiso["Permiso"]["id"], "imprimir"],
+                                "icono" => "fa fa-print",
+                                "target" => "_blank"
+                            ]*/
                         ]
                     ]);
                 } elseif($permiso["Permiso"]["estado"] == 3) {
