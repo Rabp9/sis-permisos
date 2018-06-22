@@ -13,7 +13,7 @@ class Calculos {
             $suma_horas += $horas;
             $suma_minutos += $minutos;
         }
-        $suma_horas += variant_int($suma_minutos / 60);
+        $suma_horas += intval($suma_minutos / 60);
         $suma_minutos = $suma_minutos % 60;
         return $suma_horas . " horas y " . $suma_minutos . " minutos";
     }
@@ -27,7 +27,7 @@ class Calculos {
             $suma_horas += $horas;
             $suma_minutos += $minutos;
         }
-        $suma_horas += variant_int($suma_minutos / 60);
+        $suma_horas += intval($suma_minutos / 60);
         $suma_minutos = $suma_minutos % 60;
 
         $descuento_minutos = $suma_horas * 60 + $suma_minutos;
